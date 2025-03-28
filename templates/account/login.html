@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="login-box bg-zinc-700 flex flex-col w-4/5 max-w-[800px] p-6 rounded-lg shadow-lg px-12">
+    <div class="text-white text-center text-2xl font-semibold mb-4 items-center align-center">
+        <img src="{% static 'images/syn.png' %}" alt="" class="invert w-12 inline">
+        Synergy
+    </div>
+    <form method="post" class="flex flex-col">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+            <div class="bg-red-500 text-white p-2 rounded mb-3">
+                {{ form.non_field_errors.0 }}
+            </div>
+        {% endif %}
+        <label class="text-white mb-1" for="id_login">Email:</label>
+        <input type="email" id="id_login" name="login" placeholder="Email address"
+               class="mb-3 p-2 rounded bg-zinc-800/75 text-white focus:outline-none focus:ring-2 focus:ring-zinc-500">
+
+        <label class="text-white mb-1" for="id_password">Password:</label>
+        <input type="password" id="id_password" name="password" placeholder="Password"
+               class="mb-3 p-2 rounded bg-zinc-800/75 text-white focus:outline-none focus:ring-2 focus:ring-zinc-500">
+
+        <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center">
+                <input type="checkbox" id="id_remember" name="remember" class="mr-2">
+                <label for="id_remember" class="text-white text-sm">Remember Me</label>
+            </div>
+            <a href="{% url 'account_reset_password' %}" class="text-zinc-400 text-sm hover:underline">Forgot your password?</a>
+        </div>
+
+        <button type="submit" class="bg-zinc-500 text-white py-2 rounded-lg hover:bg-zinc-600 transition">
+            Login
+        </button>
+    </form>
+
+    <p class="text-white text-center mt-3 text-sm">Don't have an account?
+        <a href="{% url 'account_signup' %}" class="text-zinc-400 hover:underline">Sign up</a>
+    </p>
+</div>
+{% endblock %}

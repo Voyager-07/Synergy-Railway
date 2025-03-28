@@ -1,0 +1,28 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <title>Home</title>
+
+</head>
+    <body class="bg-zinc-900 font-[Montserrat] w-full overscroll-none">
+        {% include 'navbar.html' %}
+
+        <!--Container = Sidebar + Page-->
+        <div class="cont flex flex-row h-fit w-full absolute top-20">
+            {% include 'sidebar.html' %}
+            <div class="content-cont flex z-[-1] items-center justify-center md:w-[80vw] w-screen bg-zinc-800 h-screen md:rounded-tl-[25px] text-white">
+
+            </div>
+        </div>
+
+        {% include 'bottombar.html' %}
+
+    </body>
+</html>

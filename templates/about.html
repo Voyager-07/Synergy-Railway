@@ -1,0 +1,61 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <title>Home</title>
+
+</head>
+    <body class="bg-zinc-900 font-[Montserrat] w-full overscroll-none">
+        {% include 'navbar.html' %}
+
+        <!--Container = Sidebar + Page-->
+        <div class="cont flex flex-row h-fit w-full absolute top-20">
+            {% include 'sidebar.html' %}
+            <div class="content-cont flex z-[-1] items-center justify-center md:w-[80vw] w-screen bg-zinc-800 h-screen md:rounded-tl-[25px] text-white">
+                <!-- About Section -->
+                <section class="px-6 md:px-20">
+                    <div class="max-w-4xl mx-auto text-center">
+                        <h1 class="text-4xl font-extrabold text-sky-400">About Synergy</h1>
+                        <p class="mt-4 text-lg text-gray-300">
+                            Synergy is an advanced coding profile aggregator that compiles and visualizes data from multiple coding platforms,
+                            helping candidates showcase their skills and aiding hiring teams in making informed decisions.
+                        </p>
+                    </div>
+
+                    <!-- Features -->
+                    <div class="mt-12 grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                        <!-- Feature 1 -->
+                        <div class="p-6 bg-zinc-800 rounded-xl text-center shadow-lg">
+                            <img src="{% static 'images/syn.png' %}" class="w-16 mx-auto mb-4">
+                            <h2 class="text-xl font-semibold text-sky-400">Aggregated Data & Performance</h2>
+                            <p class="text-gray-400 mt-2">Fetches data from multiple coding platforms using APIs, reducing fetch time by 40% with multithreading.</p>
+                        </div>
+
+                        <!-- Feature 2 -->
+                        <div class="p-6 bg-zinc-800 rounded-xl text-center shadow-lg">
+                            <img src="{% static 'images/syn.png' %}" class="w-16 mx-auto mb-4">
+                            <h2 class="text-xl font-semibold text-sky-400">User-Friendly Dashboard</h2>
+                            <p class="text-gray-400 mt-2">Built with Django & TailwindCSS, featuring ratings, heatmaps, badges, and upcoming contests.</p>
+                        </div>
+
+                        <!-- Feature 3 -->
+                        <div class="p-6 bg-zinc-800 rounded-xl text-center shadow-lg">
+                            <img src="{% static 'images/syn.png' %}" class="w-16 mx-auto mb-4">
+                            <h2 class="text-xl font-semibold text-sky-400">Advanced Insights for Hiring</h2>
+                            <p class="text-gray-400 mt-2">Provides honesty scores, plagiarism checks, and visual rankings, improving candidate assessment accuracy by 30%.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        {% include 'bottombar.html' %}
+
+    </body>
+</html>

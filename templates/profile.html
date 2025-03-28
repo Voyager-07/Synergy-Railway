@@ -1,0 +1,78 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <title>Profile</title>
+
+</head>
+    <body class="bg-zinc-900 font-[Montserrat] w-full overscroll-none">
+        {% include 'navbar.html' %}
+
+        <!--Container = Sidebar + Page-->
+        <div class="cont flex flex-row h-fit w-full absolute top-20">
+            {% include 'sidebar.html' %}
+
+
+        <div class="content-cont flex z-[-1] items-center justify-center md:w-[80vw] w-screen bg-zinc-800 h-screen md:rounded-tl-[25px] text-white">
+<!--        Profile Container Starts-->
+            <div class="profile flex flex-col items-center w-4/5 h-1/2 bg-zinc-900 rounded-lg p-2">
+                <!-- PFP  -->
+                {% if request.user.profile_image %}
+                <div class="rounded-full bg-[url('{{ request.user.profile_image.url }}')]  bg-cover ring-2 w-16 h-16 m-2"></div>
+                {% else %}
+                <div class="rounded-full bg-sky-100 bg-cover ring-2 w-16 h-16 m-2"></div>
+                {% endif %}
+
+                <div class="info-cont flex items-center justify-center w-1/2 min-w-fit h-12 p-2 m-2 rounded-lg bg-zinc-800 text-zinc-300">
+                    <div class="text-zinc-500">Name : &ThickSpace;</div>{{ request.user.full_name }}
+                </div>
+                <div class="info-cont flex items-center justify-center w-1/2 min-w-fit h-12 p-2 m-2 rounded-lg bg-zinc-800 text-zinc-300"><div class="text-zinc-500">Email : &ThickSpace;</div> {{ request.user.email }}</div>
+
+                <!-- Platforms  -->
+                 <div class="platforms flex justify-between w-1/2 m-4">
+                    <!-- LeetCode  -->
+                    <div class="logo w-16 h-16 bg-zinc-700 p-2 rounded-full">
+                        <div class="lc  bg-cover w-full h-full" style="background-image: url('{% static 'images/leet.png' %}');"></div>
+                        {% if request.user.lc_username %}
+                            <div class="tick bg-cover w-5 h-5 relative right-[-36px] top-[-56px]" style="background-image: url('{% static 'images/green-tick.png' %}'); "></div>
+                        {% else %}
+                            <div class="cross bg-cover w-5 h-5 relative right-[-36px] top-[-56px]" style="background-image: url('{% static 'images/red-cross.png' %}'); "></div>
+                        {% endif %}
+                    </div>
+                    <!-- CodeChef  -->
+                    <div class="logo w-16 h-16 bg-zinc-700 p-2 rounded-full">
+                        <div class="lc invert bg-cover w-full h-full" style="background-image: url('{% static 'images/cc.png' %}'); "></div>
+                        {% if request.user.cc_username %}
+                            <div class="tick bg-cover w-5 h-5 relative right-[-36px] top-[-56px]" style="background-image: url('{% static 'images/green-tick.png' %}'); "></div>
+                        {% else %}
+                            <div class="cross bg-cover w-5 h-5 relative right-[-36px] top-[-56px]" style="background-image: url('{% static 'images/red-cross.png' %}'); "></div>
+                        {% endif %}
+                    </div>
+                    <!-- CodeForces -->
+                    <div class="logo w-16 h-16 bg-zinc-700 p-2 rounded-full">
+                        <div class="lc bg-cover w-full h-full" style="background-image: url('{% static 'images/cf.png' %}'); "></div>
+                        {% if request.user.cf_username %}
+                            <div class="tick bg-cover w-5 h-5 relative right-[-36px] top-[-56px]" style="background-image: url('{% static 'images/green-tick.png' %}'); "></div>
+                        {% else %}
+                            <div class="cross bg-cover w-5 h-5 relative right-[-36px] top-[-56px]" style="background-image: url('{% static 'images/red-cross.png' %}'); "></div>
+                        {% endif %}
+                    </div>
+                 </div>
+
+            </div>
+
+
+        </div>
+    <!--        Profile Container Ends-->
+        </div>
+
+        {% include 'bottombar.html' %}
+
+    </body>
+</html>
