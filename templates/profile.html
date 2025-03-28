@@ -19,9 +19,19 @@
             {% include 'sidebar.html' %}
 
 
-        <div class="content-cont flex z-[-1] items-center justify-center md:w-[80vw] w-screen bg-zinc-800 h-screen md:rounded-tl-[25px] text-white">
+        <div class="content-cont flex z-[0] items-center justify-center md:w-[80vw] w-screen bg-zinc-800 h-screen min-h-fit pb-16 md:rounded-tl-[25px] text-white">
 <!--        Profile Container Starts-->
-            <div class="profile flex flex-col items-center w-4/5 h-1/2 bg-zinc-900 rounded-lg p-2">
+            <div class="profile relative flex flex-col items-center justify-center w-4/5 h-1/2 bg-zinc-900 rounded-lg p-2">
+                <!-- Update Profile Button  -->
+                <div class="p-1 px-4 w-fit text-sm rounded-md bg-zinc-700 hover:cursor-pointer flex items-center gap-2 absolute right-1 top-1" onclick="window.location.href='{% url 'update_profile' %}'">
+                    <svg class="feather feather-edit" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                    </svg>
+                    Update
+                </div>
+                
+
                 <!-- PFP  -->
                 {% if request.user.profile_image %}
                 <div class="rounded-full bg-[url('{{ request.user.profile_image.url }}')]  bg-cover ring-2 w-16 h-16 m-2"></div>
@@ -35,7 +45,7 @@
                 <div class="info-cont flex items-center justify-center w-1/2 min-w-fit h-12 p-2 m-2 rounded-lg bg-zinc-800 text-zinc-300"><div class="text-zinc-500">Email : &ThickSpace;</div> {{ request.user.email }}</div>
 
                 <!-- Platforms  -->
-                 <div class="platforms flex justify-between w-1/2 m-4">
+                 <div class="platforms flex justify-between w-2/3 m-4">
                     <!-- LeetCode  -->
                     <div class="logo w-16 h-16 bg-zinc-700 p-2 rounded-full">
                         <div class="lc  bg-cover w-full h-full" style="background-image: url('{% static 'images/leet.png' %}');"></div>
