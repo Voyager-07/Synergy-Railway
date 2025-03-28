@@ -196,3 +196,54 @@ ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"  # Use "http" for local development
 
 ACCOUNT_PASSWORD_RESET_REDIRECT_URL = "/accounts/login/"  # Redirect after password reset
 ACCOUNT_SIGNIN_REDIRECT_URL = "/"  # Optional: Redirect users after login
+
+
+
+import os
+import logging
+from logging.handlers import RotatingFileHandler
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+
+    'formatters': {
+        'verbose': {
+            'format': "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt': "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+            'format': '%(levelname)s: %(message)s'
+        },
+    },
+
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs/mysite.log'),
+            'maxBytes': 1024 * 1024 * 1,  # 1MB log file max
+            'backupCount': 5,  # Keep 5 backups
+            'formatter': 'verbose',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+    },
+
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'MYAPP': {  # Replace with your app name
+            'handlers': ['file', 'console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+    }
+}
+
