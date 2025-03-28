@@ -32,6 +32,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'synergy.up.railway.app']
 
+CSRF_TRUSTED_ORIGINS = [ 'https://synergy.up.railway.app' ]
+
 
 # Application definition
 
