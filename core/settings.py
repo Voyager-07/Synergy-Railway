@@ -168,6 +168,20 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+
+SECURE_HSTS_SECONDS = 31536000  # 1 year (recommended)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+
+SECURE_SSL_REDIRECT = True
+
+
+SESSION_COOKIE_SECURE = True
+
+CSRF_COOKIE_SECURE = True
+
+
 # ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 LOGIN_REDIRECT_URL = '/'
@@ -183,7 +197,7 @@ EMAIL_HOST_PASSWORD = os.getenv("SMTP_PASSWORD")  # Use App Password if using Gm
 DEFAULT_FROM_EMAIL = 'synergy.mono@gmail.com'
 
 
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_LOGIN_METHODS = { 'email' }
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'none'  # Force email verification
 ACCOUNT_UNIQUE_EMAIL = True
