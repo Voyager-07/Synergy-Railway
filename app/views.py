@@ -241,6 +241,10 @@ def cc_contest_rating_and_heatmap(cc_username):
     """
     # Fetch data once
     api_data = fetch_codechef_data(cc_username)
+
+    if not api_data or "error" in api_data:
+        return ("", "", "", "", 0, "<p>No rating data available</p>", [])
+    
     pname = api_data['name']
     pfp = api_data['profile']
     country_flag = api_data['countryFlag']
